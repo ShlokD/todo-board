@@ -7,8 +7,9 @@ application = Flask(__name__)
 def get_collection():
     for key in os.environ:
         print(key, ':', os.environ[key])
-    
-    conn = pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
+
+    conn = pymongo.MongoClient('mongodb://' + os.environ['MONGODB_SERVICE_HOST'] + ':' + os.environ['MONGODB_SERVICE_PORT'])
+    print(conn)
     return conn["sampledb"]["samplecollection"]
 
 

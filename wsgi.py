@@ -5,6 +5,9 @@ from flask import Flask
 application = Flask(__name__)
 
 def get_collection():
+    for key in os.environ:
+        print(key, ':', os.environ[key])
+    
     conn = pymongo.MongoClient(os.environ['OPENSHIFT_MONGODB_DB_URL'])
     return conn["sampledb"]["samplecollection"]
 

@@ -6,7 +6,7 @@ application = Flask(__name__)
 @application.route("/")
 def home():
     status = dict()
-    status["code"] = "OK"
+    status["code"] = "This is great"
     return status
 
 

@@ -8,9 +8,9 @@ def get_collection():
     for key in os.environ:
         print(key, ':', os.environ[key])
 
-    conn = pymongo.MongoClient('mongodb://' + os.environ['MONGODB_SERVICE_HOST'] + ':' + os.environ['MONGODB_SERVICE_PORT'])
+    conn = pymongo.MongoClient('mongodb://' + os.environ['MONGODB_SERVICE_HOST'] + ':' + os.environ['MONGODB_SERVICE_PORT'] + '/sampledb')
     print(conn)
-    return conn["sampledb"]["samplecollection"]
+    return conn["samplecollection"]
 
 
 @application.route("/")

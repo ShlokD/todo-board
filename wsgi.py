@@ -9,8 +9,8 @@ def get_collection():
         print(key, ':', os.environ[key])
 
     conn = pymongo.MongoClient('mongodb://' + os.environ['MONGODB_SERVICE_HOST'] + ':' + os.environ['MONGODB_SERVICE_PORT'] + '/sampledb')
-    print(conn)
-    return conn["samplecollection"]
+    print(conn.list_database_names())
+    return conn["sampledb"]["samplecollection"]
 
 
 @application.route("/")

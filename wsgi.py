@@ -14,7 +14,7 @@ def get_collection():
 @application.route("/")
 def home():
     status = dict()
-    status["code"] = "This is great"
+    status["code"] = "This is great, too"
     return status
 
 

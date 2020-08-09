@@ -5,7 +5,7 @@ from flask import Flask
 application = Flask(__name__)
 
 def get_collection():
-    conn = pymongo.MongoClient(os.environ('OPENSHIFT_NOSQL_DB_URL'))
+    conn = pymongo.MongoClient(os.environ['OPENSHIFT_NOSQL_DB_URL'])
     return conn["sampledb"]["samplecollection"]
 
 

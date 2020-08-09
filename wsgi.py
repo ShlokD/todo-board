@@ -5,11 +5,11 @@ from flask import Flask
 application = Flask(__name__)
 
 def get_collection():
-    for key in os.environ:
-        print(key, ':', os.environ[key])
-
     conn = pymongo.MongoClient('mongodb://' + os.environ['MONGODB_SERVICE_HOST'] + ':' + os.environ['MONGODB_SERVICE_PORT'] + '/sampledb')
-    print(conn.list_database_names())
+    for db in conn.list_database_names():
+        print("database", db);
+        print("collections", conn[db].collection_names())
+    
     return conn["sampledb"]["samplecollection"]
 
 

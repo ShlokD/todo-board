@@ -9,8 +9,6 @@ def get_collection():
     for db in conn.list_database_names():
         print("database", db);
         print("collections", conn[db].collection_names())
-    
-    return conn["sampledb"]["samplecollection"]
 
 
 @application.route("/")
@@ -22,17 +20,14 @@ def home():
 
 @application.route("/post")
 def post():
-    collection = get_collection()
-    data = { "message": "Om Namah Shivay"}
-    inserted = collection.insert_one(data)
-    return { id: inserted.inserted_id }
+    get_collection()
+    return { "message": "posting data..."}
 
 
 @application.route("/get-message")
 def get_message():
-    collection = get_collection()
-    data = collection.find_one()
-    return data
+    get_collection()
+    return {"message": "getting data..."}
 
 
 if __name__ == "__main__":
